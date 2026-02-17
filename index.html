@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Дуров: Путь к легенде</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game">
+    <!-- Локация: Квартира Павла (начало пути) -->
+    <div id="location-home" class="location active">
+      <div class="room room-home">
+        <div class="room-title">Квартира Павла. Начало нулевых. Никакого богатства — только комп, кровать и мечты.</div>
+        <div class="hotspots">
+          <button type="button" class="hotspot hotspot-phone" data-action="open-phone" title="Телефон">
+            <span class="hotspot-icon">📱</span>
+            <span class="hotspot-label">Телефон</span>
+          </button>
+          <button type="button" class="hotspot hotspot-laptop" data-action="telegram" title="Комп">
+            <span class="hotspot-icon">💻</span>
+            <span class="hotspot-label">Комп</span>
+          </button>
+          <button type="button" class="hotspot hotspot-dumbbell" data-action="muscles" title="Гантель">
+            <span class="hotspot-icon">🏋️</span>
+            <span class="hotspot-label">Гантель</span>
+          </button>
+          <button type="button" class="hotspot hotspot-bed" data-action="children" title="Кровать">
+            <span class="hotspot-icon">🛏️</span>
+            <span class="hotspot-label">Кровать</span>
+          </button>
+          <button type="button" class="hotspot hotspot-door" data-action="go-map" title="Выйти">
+            <span class="hotspot-icon">🚪</span>
+            <span class="hotspot-label">Выйти</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Локация: Зал -->
+    <div id="location-gym" class="location">
+      <div class="room room-gym">
+        <div class="room-title">Качалка. Пот, железо, зеркало. Здесь рождаются бицепсы.</div>
+        <div class="hotspots">
+          <button type="button" class="hotspot hotspot-bar" data-action="muscles" title="Штанга">
+            <span class="hotspot-icon">🏋️‍♂️</span>
+            <span class="hotspot-label">Штанга</span>
+          </button>
+          <button type="button" class="hotspot hotspot-treadmill" data-action="muscles" title="Дорожка">
+            <span class="hotspot-icon">🏃</span>
+            <span class="hotspot-label">Дорожка</span>
+          </button>
+          <button type="button" class="hotspot hotspot-mirror" data-action="view-muscles" title="Зеркало">
+            <span class="hotspot-icon">🪞</span>
+            <span class="hotspot-label">Зеркало</span>
+          </button>
+          <button type="button" class="hotspot hotspot-door" data-action="go-map" title="Выйти">
+            <span class="hotspot-icon">🚪</span>
+            <span class="hotspot-label">Выйти</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Локация: Подвал с серверами -->
+    <div id="location-cave" class="location">
+      <div class="room room-cave">
+        <div class="room-title">Подвал. Сервера мигают. Здесь рождается Telegram. И мысли о крипте.</div>
+        <div class="hotspots">
+          <button type="button" class="hotspot hotspot-servers" data-action="telegram" title="Сервера">
+            <span class="hotspot-icon">🖥️</span>
+            <span class="hotspot-label">Сервера</span>
+          </button>
+          <button type="button" class="hotspot hotspot-chart" data-action="ton" title="График TON">
+            <span class="hotspot-icon">📈</span>
+            <span class="hotspot-label">График TON</span>
+          </button>
+          <button type="button" class="hotspot hotspot-code" data-action="telegram" title="Писать код">
+            <span class="hotspot-icon">⌨️</span>
+            <span class="hotspot-label">Код</span>
+          </button>
+          <button type="button" class="hotspot hotspot-door" data-action="go-map" title="Выйти">
+            <span class="hotspot-icon">🚪</span>
+            <span class="hotspot-label">Выйти</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Карта перемещений -->
+    <div id="location-map" class="location">
+      <div class="room room-map">
+        <div class="room-title">Куда идём?</div>
+        <div class="map-buttons">
+          <button type="button" class="map-btn" data-location="home">🏠 Квартира</button>
+          <button type="button" class="map-btn" data-location="gym">💪 Зал</button>
+          <button type="button" class="map-btn" data-location="cave">🖥️ Подвал</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Лог событий (внизу экрана) -->
+    <div class="game-log" id="log">
+      <p>Ты в квартире молодого Павла. Подойди к телефону — там твоё состояние. Комп, гантель, кровать и дверь ждут.</p>
+    </div>
+    <footer class="game-footer">
+      <button type="button" id="btn-save">Сохранить</button>
+      <button type="button" id="btn-reset">Сброс</button>
+    </footer>
+  </div>
+
+  <!-- Телефон (оверлей) -->
+  <div id="phone-overlay" class="phone-overlay hidden">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-status">
+          <span id="phone-time">12:00</span>
+          <span class="phone-battery">🔋 100%</span>
+        </div>
+        <!-- Экран: Статы -->
+        <div id="phone-page-stats" class="phone-page active">
+          <h2 class="phone-title">Состояние</h2>
+          <div class="phone-stat"><span class="phone-stat-label">Уровень Дурова</span><span id="p-val-level" class="phone-stat-val">0</span><span class="phone-stat-max">/100</span></div>
+          <div class="phone-stat-bar"><div class="phone-stat-fill" id="p-bar-level"></div></div>
+          <div class="phone-stat"><span class="phone-stat-label">Накаченность</span><span id="p-val-muscles" class="phone-stat-val">0</span><span class="phone-stat-max">/100</span></div>
+          <div class="phone-stat-bar"><div class="phone-stat-fill" id="p-bar-muscles"></div></div>
+          <div class="phone-stat"><span class="phone-stat-label">Дети</span><span id="p-val-children" class="phone-stat-val">0</span><span class="phone-stat-max">/100</span></div>
+          <div class="phone-stat-bar"><div class="phone-stat-fill" id="p-bar-children"></div></div>
+          <div class="phone-stat"><span class="phone-stat-label">Telegram</span><span id="p-val-telegram" class="phone-stat-val">0</span><span class="phone-stat-max">%</span></div>
+          <div class="phone-stat-bar"><div class="phone-stat-fill" id="p-bar-telegram"></div></div>
+          <div class="phone-stat"><span class="phone-stat-label">TON</span><span id="p-val-ton" class="phone-stat-val">0</span><span class="phone-stat-max">$</span></div>
+          <div class="phone-stat-bar"><div class="phone-stat-fill" id="p-bar-ton"></div></div>
+          <div class="phone-footer">
+            <button type="button" class="phone-footer-btn" id="phone-save">Сохранить</button>
+            <button type="button" class="phone-footer-btn danger" id="phone-reset">Сброс</button>
+          </div>
+          <div class="phone-nav">
+            <button type="button" class="phone-nav-btn active" data-page="stats">Статы</button>
+            <button type="button" class="phone-nav-btn" data-page="apps">Приложения</button>
+          </div>
+        </div>
+        <!-- Экран: Приложения -->
+        <div id="phone-page-apps" class="phone-page">
+          <h2 class="phone-title">Приложения</h2>
+          <div class="phone-apps">
+            <button type="button" class="phone-app" data-action="open-stats" title="Состояние">
+              <span class="phone-app-icon">📊</span>
+              <span class="phone-app-name">Статы</span>
+            </button>
+            <button type="button" class="phone-app" data-action="children" title="Знакомства">
+              <span class="phone-app-icon">💕</span>
+              <span class="phone-app-name">Знакомства</span>
+            </button>
+            <button type="button" class="phone-app" data-action="ton" title="TON кошелёк">
+              <span class="phone-app-icon">🪙</span>
+              <span class="phone-app-name">TON</span>
+            </button>
+          </div>
+          <div class="phone-nav">
+            <button type="button" class="phone-nav-btn" data-page="stats">Статы</button>
+            <button type="button" class="phone-nav-btn active" data-page="apps">Приложения</button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="phone-close" id="phone-close" aria-label="Закрыть">✕</button>
+    </div>
+  </div>
+
+  <!-- Победа -->
+  <div id="win-overlay" class="overlay hidden">
+    <div class="win-box">
+      <h2>Ты достиг уровня Павла Дурова</h2>
+      <p>100 детей, Telegram создан, TON по $1000. Легенда.</p>
+      <button type="button" id="btn-close-win">Круто</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
