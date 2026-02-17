@@ -19,9 +19,14 @@ python -m http.server 8080
 
 Открой `http://localhost:3000` (или 8080) — игра работает и без Telegram.
 
+## Деплой на Vercel
+1. Зайди на [vercel.com](https://vercel.com), Import Git Repository → выбери `ViberKoder/beceo`.
+2. Root Directory оставь пустым (корень репо), Framework Preset — Other (или None). Deploy.
+3. После деплоя получишь URL вида `https://beceo-xxx.vercel.app` — его указываешь в BotFather как URL Mini App.
+
 ## Подключение к Telegram
 1. Создай бота через [@BotFather](https://t.me/BotFather): `/newbot`.
-2. Создай Mini App: в BotFather — `/newapp`, привяжи к боту, укажи URL (HTTPS) на твой `index.html`.
+2. Создай Mini App: в BotFather — `/newapp`, привяжи к боту, укажи URL (HTTPS) с Vercel.
 3. Либо через [@BotFather](https://t.me/BotFather) → `/myapps` или Menu Button задай URL веб-приложения.
 
 Скрипт `telegram-web-app.js` и тема (цвета) подхватываются автоматически в клиенте Telegram.
