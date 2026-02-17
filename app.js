@@ -159,46 +159,11 @@
 
   function openLaptop() {
     document.getElementById('laptop-overlay').classList.remove('hidden');
-    loadLottieLaptop();
     if (Telegram) Telegram.HapticFeedback.impactOccurred('light');
   }
 
   function closeLaptop() {
     document.getElementById('laptop-overlay').classList.add('hidden');
-  }
-
-  var lottieLaptopLoaded = false;
-  function loadLottieLaptop() {
-    if (lottieLaptopLoaded || !window.lottie) return;
-    var container = document.getElementById('lottie-laptop');
-    if (!container || container.children.length > 0) return;
-    lottie.loadAnimation({
-      container: container,
-      renderer: 'svg',
-      loop: true,
-      path: 'assets/laptop.json',
-      autoplay: true
-    });
-    lottieLaptopLoaded = true;
-  }
-
-  var lottieCharacterLoaded = false;
-  function loadLottieCharacter() {
-    if (lottieCharacterLoaded || !window.lottie) return;
-    var container = document.getElementById('lottie-character');
-    if (!container) return;
-    var anim = lottie.loadAnimation({
-      container: container,
-      renderer: 'svg',
-      loop: true,
-      path: 'assets/character1.json',
-      autoplay: true
-    });
-    lottieCharacterLoaded = true;
-    anim.addEventListener('DOMLoaded', function () {
-      var fallback = document.querySelector('.room-home .character-svg.character-fallback');
-      if (fallback) fallback.classList.add('lottie-active');
-    });
   }
 
   function showPhonePage(page) {
@@ -303,7 +268,6 @@
     renderPhoneStats();
     updatePhoneTime();
     setInterval(updatePhoneTime, 60000);
-    if (window.lottie) loadLottieCharacter();
 
     document.querySelectorAll('.hotspot-area, .hotspot').forEach(function (btn) {
       btn.addEventListener('click', function () {

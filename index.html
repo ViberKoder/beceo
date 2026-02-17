@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Дуров: Путь к легенде</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -16,75 +15,82 @@
         <p class="room-title">Квартира Павла. Начало нулевых.</p>
         <div class="game-view">
           <div class="scene-wrap">
+            <!-- Комната: нарисована с нуля в стиле Lottie — округлые формы, чёткий контур, мягкие заливки -->
             <svg class="scene-svg" viewBox="0 0 380 240" preserveAspectRatio="xMidYMid meet">
               <defs>
-                <linearGradient id="wallLight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8b8c0"/><stop offset="1" stop-color="#a0a0a8"/></linearGradient>
-                <linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#787880"/><stop offset="1" stop-color="#606068"/></linearGradient>
+                <linearGradient id="wallG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8e6e8"/><stop offset="1" stop-color="#d4d2d8"/></linearGradient>
+                <linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9c9a9c"/><stop offset="1" stop-color="#7a787c"/></linearGradient>
+                <linearGradient id="woodG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b7355"/><stop offset="1" stop-color="#5c4a38"/></linearGradient>
+                <linearGradient id="fabricG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0dee4"/><stop offset="1" stop-color="#c4c2c8"/></linearGradient>
+                <linearGradient id="posterG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9f5a"/><stop offset="1" stop-color="#e87838"/></linearGradient>
               </defs>
-              <!-- Стена светлая -->
-              <rect width="380" height="145" fill="url(#wallLight)" stroke="#8a8a92" stroke-width="1"/>
-              <!-- Пол -->
-              <rect y="145" width="380" height="95" fill="url(#floorG)" stroke="#505058" stroke-width="1"/>
-              <!-- Кровать: каркас дерево, матрас серый -->
-              <rect x="8" y="108" width="92" height="50" rx="2" fill="#4a3728" stroke="#2a1f18"/>
-              <rect x="12" y="112" width="84" height="38" rx="2" fill="#c8c8d0" stroke="#a0a0a8"/>
-              <rect x="16" y="115" width="28" height="18" rx="2" fill="#d8d8e0"/>
-              <!-- Тумбочка + лампа + телефон -->
-              <rect x="102" y="118" width="28" height="38" fill="#3d2e22" stroke="#2a2018"/>
-              <rect x="108" y="108" width="16" height="22" rx="1" fill="#e8c830" stroke="#c0a020"/>
-              <text x="116" y="122" font-size="10" fill="#1a1a1a" text-anchor="middle">♪</text>
-              <rect x="124" y="128" width="10" height="18" rx="2" fill="#1a1a1a" stroke="#333"/>
-              <!-- Шкаф открытый -->
-              <rect x="138" y="75" width="58" height="75" fill="#3d2e22" stroke="#2a2018"/>
-              <line x1="167" y1="75" x2="167" y2="150" stroke="#4a3728"/>
-              <rect x="145" y="85" width="12" height="8" fill="#808890"/>
-              <rect x="160" y="85" width="12" height="8" fill="#808890"/>
-              <rect x="145" y="98" width="28" height="22" rx="1" fill="#6a9eb0"/>
-              <rect x="150" y="125" width="22" height="18" rx="1" fill="#7aa8b8"/>
-              <!-- Постер -->
-              <rect x="200" y="25" width="90" height="65" rx="2" fill="#1a1a1a" stroke="#333"/>
-              <rect x="205" y="30" width="80" height="55" rx="1" fill="#e07830"/>
-              <text x="245" y="55" font-size="10" font-weight="bold" fill="#1a1a1a" text-anchor="middle">TON</text>
-              <text x="245" y="70" font-size="14" font-weight="bold" fill="#1a1a1a" text-anchor="middle">$1000</text>
-              <!-- Стол + ноут + гантель на полу -->
-              <rect x="258" y="115" width="70" height="38" rx="2" fill="#5a4a3a" stroke="#3d3528"/>
-              <rect x="265" y="108" width="42" height="22" rx="1" fill="#2a2a2a"/>
-              <rect x="268" y="111" width="36" height="14" rx="0" fill="#0a84ff"/>
-              <circle cx="295" cy="188" r="10" fill="#5a5a62" stroke="#3a3a42"/>
-              <circle cx="318" cy="188" r="10" fill="#5a5a62" stroke="#3a3a42"/>
-              <line x1="305" y1="188" x2="308" y2="188" stroke="#4a4a52" stroke-width="5"/>
-              <!-- Дверь и неоновая стрелка выхода -->
-              <rect x="318" y="82" width="42" height="68" rx="2" fill="#505058" stroke="#404048"/>
-              <circle cx="355" cy="108" r="4" fill="#8e8e93"/>
-              <path d="M348 115 L365 128 L348 141 Z" fill="#00e676" stroke="#00c864" stroke-width="2"/>
+              <rect width="380" height="145" fill="url(#wallG)" stroke="#2d2b30" stroke-width="2"/>
+              <rect y="145" width="380" height="95" fill="url(#floorG)" stroke="#2d2b30" stroke-width="2"/>
+              <!-- Кровать: округлые подушки и матрас -->
+              <rect x="10" y="108" width="88" height="52" rx="10" fill="url(#woodG)" stroke="#2d2b30" stroke-width="2"/>
+              <rect x="16" y="114" width="76" height="40" rx="8" fill="url(#fabricG)" stroke="#2d2b30" stroke-width="1.5"/>
+              <rect x="20" y="118" width="28" height="20" rx="6" fill="#e8e6ec" stroke="#2d2b30" stroke-width="1.5"/>
+              <!-- Тумбочка, лампа, телефон -->
+              <rect x="100" y="116" width="32" height="42" rx="6" fill="url(#woodG)" stroke="#2d2b30" stroke-width="2"/>
+              <rect x="108" y="104" width="18" height="26" rx="4" fill="#f5e6a8" stroke="#2d2b30" stroke-width="1.5"/>
+              <text x="117" y="120" font-size="11" fill="#2d2b30" text-anchor="middle">♪</text>
+              <rect x="124" y="126" width="12" height="20" rx="4" fill="#1c1c1e" stroke="#2d2b30" stroke-width="1.5"/>
+              <!-- Шкаф -->
+              <rect x="136" y="72" width="62" height="78" rx="8" fill="url(#woodG)" stroke="#2d2b30" stroke-width="2"/>
+              <line x1="167" y1="72" x2="167" y2="150" stroke="#2d2b30" stroke-width="1.5"/>
+              <rect x="144" y="82" width="14" height="10" rx="3" fill="#6a6a72" stroke="#2d2b30"/>
+              <rect x="162" y="82" width="14" height="10" rx="3" fill="#6a6a72" stroke="#2d2b30"/>
+              <rect x="144" y="98" width="32" height="24" rx="4" fill="#7eb4c4" stroke="#2d2b30" stroke-width="1.5"/>
+              <rect x="148" y="128" width="24" height="18" rx="4" fill="#8ec4d4" stroke="#2d2b30" stroke-width="1.5"/>
+              <!-- Постер TON -->
+              <rect x="198" y="22" width="94" height="70" rx="8" fill="#1c1c1e" stroke="#2d2b30" stroke-width="2"/>
+              <rect x="204" y="28" width="82" height="58" rx="6" fill="url(#posterG)" stroke="#2d2b30" stroke-width="1.5"/>
+              <text x="245" y="52" font-size="11" font-weight="bold" fill="#1c1c1e" text-anchor="middle">TON</text>
+              <text x="245" y="72" font-size="16" font-weight="bold" fill="#1c1c1e" text-anchor="middle">$1000</text>
+              <!-- Стол, ноутбук, гантель -->
+              <rect x="256" y="114" width="74" height="40" rx="8" fill="url(#woodG)" stroke="#2d2b30" stroke-width="2"/>
+              <rect x="264" y="106" width="46" height="26" rx="6" fill="#2d2b30" stroke="#2d2b30" stroke-width="2"/>
+              <rect x="268" y="110" width="38" height="16" rx="2" fill="#0a84ff"/>
+              <circle cx="292" cy="186" r="12" fill="#6a6870" stroke="#2d2b30" stroke-width="2"/>
+              <circle cx="318" cy="186" r="12" fill="#6a6870" stroke="#2d2b30" stroke-width="2"/>
+              <line x1="302" y1="186" x2="308" y2="186" stroke="#5a585e" stroke-width="6" stroke-linecap="round"/>
+              <!-- Дверь и стрелка -->
+              <rect x="316" y="80" width="44" height="70" rx="8" fill="#5a585e" stroke="#2d2b30" stroke-width="2"/>
+              <circle cx="356" cy="106" r="5" fill="#8a8890"/>
+              <path d="M346 112 L368 128 L346 144 Z" fill="#00e676" stroke="#00b85c" stroke-width="2"/>
             </svg>
-            <!-- Персонаж: Lottie (стиль из референсов) + SVG fallback -->
-            <div id="lottie-character" class="lottie-character" aria-hidden="true"></div>
-            <svg class="character-svg character-fallback" viewBox="0 0 100 140" preserveAspectRatio="xMidYMax meet">
-              <g transform="translate(50, 95)">
-                <!-- Волосы шипами -->
-                <path d="M -12 -28 L -8 -42 L 0 -38 L 8 -42 L 12 -28 L 6 -26 L 0 -30 L -6 -26 Z" fill="#252530" stroke="#1a1a22"/>
-                <!-- Голова -->
-                <ellipse cx="0" cy="-22" rx="14" ry="16" fill="#e8c8a8" stroke="#1a1a22" stroke-width="1.5"/>
-                <!-- Лицо: грустные брови, глаза, рот -->
-                <path d="M -6 -26 Q -4 -28 0 -27" fill="none" stroke="#252530" stroke-width="1.2"/>
-                <path d="M 0 -27 Q 4 -28 6 -26" fill="none" stroke="#252530" stroke-width="1.2"/>
-                <ellipse cx="-4" cy="-24" rx="2" ry="2.2" fill="#252530"/>
-                <ellipse cx="4" cy="-24" rx="2" ry="2.2" fill="#252530"/>
-                <path d="M -3 -18 Q 0 -16 3 -18" fill="none" stroke="#252530" stroke-width="1"/>
+            <!-- Персонаж: нарисован с нуля в стиле Lottie — круглые формы, чёткий контур, мультяшные пропорции -->
+            <svg class="character-svg" viewBox="0 0 120 160" preserveAspectRatio="xMidYMax meet">
+              <defs>
+                <linearGradient id="skinG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8e4d0"/><stop offset="1" stop-color="#e8c8a8"/></linearGradient>
+                <linearGradient id="shirtG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffef8"/><stop offset="1" stop-color="#e8e6dc"/></linearGradient>
+                <linearGradient id="jeansG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6a9ca8"/><stop offset="1" stop-color="#4a7a86"/></linearGradient>
+                <linearGradient id="hairG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d3a42"/><stop offset="1" stop-color="#2d2b30"/></linearGradient>
+              </defs>
+              <g transform="translate(60, 100)">
+                <!-- Волосы — одна округлая форма с «шипами» -->
+                <path d="M -14 -22 L -10 -38 L 0 -34 L 10 -38 L 14 -22 L 8 -20 L 0 -26 L -8 -20 Z" fill="url(#hairG)" stroke="#2d2b30" stroke-width="2" stroke-linejoin="round"/>
+                <!-- Голова — круг -->
+                <circle cx="0" cy="-18" r="16" fill="url(#skinG)" stroke="#2d2b30" stroke-width="2"/>
+                <!-- Лицо: брови, глаза, рот -->
+                <path d="M -7 -26 Q -3 -28 0 -27" fill="none" stroke="#2d2b30" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M 0 -27 Q 3 -28 7 -26" fill="none" stroke="#2d2b30" stroke-width="1.5" stroke-linecap="round"/>
+                <ellipse cx="-5" cy="-22" rx="2.5" ry="2.8" fill="#2d2b30"/>
+                <ellipse cx="5" cy="-22" rx="2.5" ry="2.8" fill="#2d2b30"/>
+                <path d="M -4 -14 Q 0 -12 4 -14" fill="none" stroke="#2d2b30" stroke-width="1.2" stroke-linecap="round"/>
                 <!-- Шея -->
-                <rect x="-4" y="-6" width="8" height="6" fill="#e0b898" stroke="#1a1a22"/>
-                <!-- Майка -->
-                <path d="M -18 0 L -16 32 L 16 32 L 18 0 L 14 -2 L 12 28 L -12 28 L -14 -2 Z" fill="#f5f5eb" stroke="#1a1a22" stroke-width="1.2"/>
-                <!-- Руки с кулаками у пояса -->
-                <path d="M -18 8 L -28 14 L -26 20 L -16 14 Z" fill="#e8c8a8" stroke="#1a1a22"/>
-                <path d="M 18 8 L 28 14 L 26 20 L 16 14 Z" fill="#e8c8a8" stroke="#1a1a22"/>
-                <circle cx="-26" cy="18" r="6" fill="#e8c8a8" stroke="#1a1a22"/>
-                <circle cx="26" cy="18" r="6" fill="#e8c8a8" stroke="#1a1a22"/>
-                <!-- Джинсы -->
-                <path d="M -16 32 L -14 58 L -6 58 L -8 32 Z" fill="#5a8a8a" stroke="#1a1a22" stroke-width="1"/>
-                <path d="M 8 32 L 6 58 L 14 58 L 16 32 Z" fill="#5a8a8a" stroke="#1a1a22" stroke-width="1"/>
-                <line x1="-2" y1="32" x2="2" y2="32" stroke="#4a7a7a"/>
+                <rect x="-5" y="-2" width="10" height="8" rx="2" fill="url(#skinG)" stroke="#2d2b30" stroke-width="1.5"/>
+                <!-- Майка — простая форма с округлым низом -->
+                <path d="M -20 6 L -18 38 L 18 38 L 20 6 L 16 4 L 14 34 L -14 34 L -16 4 Z" fill="url(#shirtG)" stroke="#2d2b30" stroke-width="2" stroke-linejoin="round"/>
+                <!-- Руки, кулаки у пояса -->
+                <path d="M -20 12 L -30 18 L -28 26 L -18 20 Z" fill="url(#skinG)" stroke="#2d2b30" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M 20 12 L 30 18 L 28 26 L 18 20 Z" fill="url(#skinG)" stroke="#2d2b30" stroke-width="2" stroke-linejoin="round"/>
+                <circle cx="-30" cy="24" r="8" fill="url(#skinG)" stroke="#2d2b30" stroke-width="2"/>
+                <circle cx="30" cy="24" r="8" fill="url(#skinG)" stroke="#2d2b30" stroke-width="2"/>
+                <!-- Ноги/джинсы -->
+                <path d="M -18 38 L -16 62 L -6 62 L -8 38 Z" fill="url(#jeansG)" stroke="#2d2b30" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M 8 38 L 6 62 L 16 62 L 18 38 Z" fill="url(#jeansG)" stroke="#2d2b30" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M -2 38 L 2 38" stroke="#3d6a78" stroke-width="1.5" stroke-linecap="round"/>
               </g>
             </svg>
             <div class="hotspots-overlay">
@@ -267,11 +273,24 @@
     </div>
   </div>
 
-  <!-- Экран ноутбука: зайти в комп → создать Telegram, TON, соцсети -->
+  <!-- Экран ноутбука: визуал в том же стиле (SVG), действия Telegram / TON / соцсети -->
   <div id="laptop-overlay" class="overlay laptop-overlay hidden">
     <div class="laptop-screen">
       <div class="laptop-screen-inner">
-        <div id="lottie-laptop" class="lottie-laptop"></div>
+        <div class="laptop-visual">
+          <svg viewBox="0 0 320 180" class="laptop-svg">
+            <defs>
+              <linearGradient id="screenBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1c1e"/><stop offset="1" stop-color="#0d0f12"/></linearGradient>
+              <linearGradient id="iconBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d3038"/><stop offset="1" stop-color="#1c1e24"/></linearGradient>
+            </defs>
+            <rect width="320" height="180" rx="8" fill="url(#screenBg)" stroke="#2d2b30" stroke-width="2"/>
+            <rect x="16" y="12" width="48" height="36" rx="6" fill="url(#iconBg)" stroke="#3d4048" stroke-width="1.5"/>
+            <rect x="72" y="12" width="48" height="36" rx="6" fill="url(#iconBg)" stroke="#3d4048" stroke-width="1.5"/>
+            <rect x="128" y="12" width="48" height="36" rx="6" fill="url(#iconBg)" stroke="#3d4048" stroke-width="1.5"/>
+            <rect x="16" y="56" width="288" height="108" rx="6" fill="#16181c" stroke="#2d2b30" stroke-width="1.5"/>
+            <text x="160" y="115" font-size="14" fill="#8a8c92" text-anchor="middle">Telegram · TON · Соцсети</text>
+          </svg>
+        </div>
         <div class="laptop-actions">
           <button type="button" class="laptop-btn laptop-btn-telegram" data-action="telegram">
             <span class="laptop-btn-icon">📱</span>

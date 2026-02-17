@@ -96,45 +96,14 @@ body {
   background: #a0a0a8;
 }
 
-/* Персонаж: Lottie в стиле референсов */
-.room-home .lottie-character {
+/* Персонаж: нарисован в стиле Lottie (округлый, чёткий контур) */
+.room-home .character-svg {
   position: absolute;
-  left: 22%;
-  bottom: 12%;
-  width: 32%;
+  left: 24%;
+  bottom: 10%;
+  width: 30%;
   height: auto;
-  max-height: 55%;
-  pointer-events: none;
-}
-
-.room-home .lottie-character svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* SVG-персонаж скрыт, когда загружен Lottie */
-.room-home .character-svg.character-fallback {
-  position: absolute;
-  left: 28%;
-  bottom: 18%;
-  width: 26%;
-  height: auto;
-  max-height: 50%;
-  pointer-events: none;
-}
-
-.room-home .character-svg.character-fallback.lottie-active {
-  display: none;
-}
-
-.room-home .character-svg:not(.character-fallback) {
-  position: absolute;
-  left: 28%;
-  bottom: 18%;
-  width: 26%;
-  height: auto;
-  max-height: 50%;
+  max-height: 58%;
   pointer-events: none;
 }
 
@@ -535,19 +504,20 @@ body {
   min-height: 320px;
 }
 
-.lottie-laptop {
+.laptop-visual {
   width: 100%;
   height: 200px;
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 16px;
-  background: #161b22;
+  background: #16181c;
 }
 
-.lottie-laptop svg {
+.laptop-visual .laptop-svg {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  display: block;
 }
 
 .laptop-actions {
