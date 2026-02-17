@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Дуров: Путь к легенде</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -57,8 +58,9 @@
               <circle cx="355" cy="108" r="4" fill="#8e8e93"/>
               <path d="M348 115 L365 128 L348 141 Z" fill="#00e676" stroke="#00c864" stroke-width="2"/>
             </svg>
-            <!-- Персонаж: худой, майка, джинсы, кулаки (как в референсе) -->
-            <svg class="character-svg" viewBox="0 0 100 140" preserveAspectRatio="xMidYMax meet">
+            <!-- Персонаж: Lottie (стиль из референсов) + SVG fallback -->
+            <div id="lottie-character" class="lottie-character" aria-hidden="true"></div>
+            <svg class="character-svg character-fallback" viewBox="0 0 100 140" preserveAspectRatio="xMidYMax meet">
               <g transform="translate(50, 95)">
                 <!-- Волосы шипами -->
                 <path d="M -12 -28 L -8 -42 L 0 -38 L 8 -42 L 12 -28 L 6 -26 L 0 -30 L -6 -26 Z" fill="#252530" stroke="#1a1a22"/>
@@ -87,7 +89,7 @@
             </svg>
             <div class="hotspots-overlay">
               <button type="button" class="hotspot-area hotspot-area-phone" data-action="open-phone" title="Телефон"></button>
-              <button type="button" class="hotspot-area hotspot-area-laptop" data-action="telegram" title="Комп"></button>
+              <button type="button" class="hotspot-area hotspot-area-laptop" data-action="open-laptop" title="Комп"></button>
               <button type="button" class="hotspot-area hotspot-area-dumbbell" data-action="muscles" title="Гантель"></button>
               <button type="button" class="hotspot-area hotspot-area-bed" data-action="children" title="Кровать"></button>
               <button type="button" class="hotspot-area hotspot-area-door" data-action="go-map" title="Выйти"></button>
@@ -262,6 +264,30 @@
         </div>
       </div>
       <button type="button" class="phone-close" id="phone-close" aria-label="Закрыть">✕</button>
+    </div>
+  </div>
+
+  <!-- Экран ноутбука: зайти в комп → создать Telegram, TON, соцсети -->
+  <div id="laptop-overlay" class="overlay laptop-overlay hidden">
+    <div class="laptop-screen">
+      <div class="laptop-screen-inner">
+        <div id="lottie-laptop" class="lottie-laptop"></div>
+        <div class="laptop-actions">
+          <button type="button" class="laptop-btn laptop-btn-telegram" data-action="telegram">
+            <span class="laptop-btn-icon">📱</span>
+            <span>Создать Telegram</span>
+          </button>
+          <button type="button" class="laptop-btn laptop-btn-ton" data-action="ton">
+            <span class="laptop-btn-icon">🪙</span>
+            <span>TON</span>
+          </button>
+          <button type="button" class="laptop-btn laptop-btn-social" data-action="children">
+            <span class="laptop-btn-icon">💕</span>
+            <span>Знакомства</span>
+          </button>
+        </div>
+      </div>
+      <button type="button" class="laptop-close" id="laptop-close" aria-label="Закрыть">✕</button>
     </div>
   </div>
 

@@ -157,6 +157,50 @@
     document.getElementById('phone-overlay').classList.add('hidden');
   }
 
+  function openLaptop() {
+    document.getElementById('laptop-overlay').classList.remove('hidden');
+    loadLottieLaptop();
+    if (Telegram) Telegram.HapticFeedback.impactOccurred('light');
+  }
+
+  function closeLaptop() {
+    document.getElementById('laptop-overlay').classList.add('hidden');
+  }
+
+  var lottieLaptopLoaded = false;
+  function loadLottieLaptop() {
+    if (lottieLaptopLoaded || !window.lottie) return;
+    var container = document.getElementById('lottie-laptop');
+    if (!container || container.children.length > 0) return;
+    lottie.loadAnimation({
+      container: container,
+      renderer: 'svg',
+      loop: true,
+      path: 'assets/laptop.json',
+      autoplay: true
+    });
+    lottieLaptopLoaded = true;
+  }
+
+  var lottieCharacterLoaded = false;
+  function loadLottieCharacter() {
+    if (lottieCharacterLoaded || !window.lottie) return;
+    var container = document.getElementById('lottie-character');
+    if (!container) return;
+    var anim = lottie.loadAnimation({
+      container: container,
+      renderer: 'svg',
+      loop: true,
+      path: 'assets/character1.json',
+      autoplay: true
+    });
+    lottieCharacterLoaded = true;
+    anim.addEventListener('DOMLoaded', function () {
+      var fallback = document.querySelector('.room-home .character-svg.character-fallback');
+      if (fallback) fallback.classList.add('lottie-active');
+    });
+  }
+
   function showPhonePage(page) {
     document.getElementById('phone-page-stats').classList.toggle('active', page === 'stats');
     document.getElementById('phone-page-apps').classList.toggle('active', page === 'apps');
@@ -259,11 +303,13 @@
     renderPhoneStats();
     updatePhoneTime();
     setInterval(updatePhoneTime, 60000);
+    if (window.lottie) loadLottieCharacter();
 
     document.querySelectorAll('.hotspot-area, .hotspot').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var action = this.getAttribute('data-action');
         if (action === 'open-phone') openPhone();
+        else if (action === 'open-laptop') openLaptop();
         else if (action === 'go-map') showLocation('map');
         else if (action === 'view-muscles') doAction('view-muscles');
         else if (action && action !== 'open-phone') doAction(action, false);
@@ -277,6 +323,16 @@
     });
 
     document.getElementById('phone-close').addEventListener('click', closePhone);
+
+    var laptopCloseEl = document.getElementById('laptop-close');
+    if (laptopCloseEl) laptopCloseEl.addEventListener('click', closeLaptop);
+
+    document.querySelectorAll('.laptop-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var action = this.getAttribute('data-action');
+        if (action) doAction(action, false);
+      });
+    });
 
     document.querySelectorAll('.phone-nav-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {

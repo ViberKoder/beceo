@@ -96,8 +96,39 @@ body {
   background: #a0a0a8;
 }
 
-/* Персонаж поверх сцены (мультяшный, как в референсе) */
-.room-home .character-svg {
+/* Персонаж: Lottie в стиле референсов */
+.room-home .lottie-character {
+  position: absolute;
+  left: 22%;
+  bottom: 12%;
+  width: 32%;
+  height: auto;
+  max-height: 55%;
+  pointer-events: none;
+}
+
+.room-home .lottie-character svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* SVG-персонаж скрыт, когда загружен Lottie */
+.room-home .character-svg.character-fallback {
+  position: absolute;
+  left: 28%;
+  bottom: 18%;
+  width: 26%;
+  height: auto;
+  max-height: 50%;
+  pointer-events: none;
+}
+
+.room-home .character-svg.character-fallback.lottie-active {
+  display: none;
+}
+
+.room-home .character-svg:not(.character-fallback) {
   position: absolute;
   left: 28%;
   bottom: 18%;
@@ -480,6 +511,97 @@ body {
 
 .overlay.hidden {
   display: none;
+}
+
+/* Экран ноутбука: визуал как Main.json, действия Telegram / TON / соцсети */
+.laptop-overlay {
+  align-items: center;
+  justify-content: center;
+}
+
+.laptop-screen {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  background: #0d1117;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 0 4px #00e676, 0 20px 60px rgba(0,0,0,0.7);
+}
+
+.laptop-screen-inner {
+  position: relative;
+  padding: 16px;
+  min-height: 320px;
+}
+
+.lottie-laptop {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: #161b22;
+}
+
+.lottie-laptop svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.laptop-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.laptop-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #00e676;
+  border-radius: 12px;
+  background: rgba(0, 230, 118, 0.08);
+  color: #00e676;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.laptop-btn:hover {
+  background: rgba(0, 230, 118, 0.18);
+}
+
+.laptop-btn:active {
+  transform: scale(0.98);
+}
+
+.laptop-btn-icon {
+  font-size: 1.25rem;
+}
+
+.laptop-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 10;
+}
+
+.laptop-close:hover {
+  background: rgba(255,255,255,0.25);
 }
 
 .win-box {
