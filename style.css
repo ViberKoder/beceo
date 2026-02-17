@@ -74,18 +74,100 @@ body {
 .room-title {
   font-size: 0.9rem;
   color: var(--muted);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   line-height: 1.4;
   text-align: center;
 }
 
-/* Сцена: рисунок + кликабельные зоны поверх */
+/* Разметка как в Douchebag: сцена слева, статы справа */
+.game-view {
+  display: flex;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+}
+
 .scene-wrap {
   position: relative;
-  width: 100%;
-  border-radius: 12px;
+  flex: 1;
+  min-width: 0;
+  border-radius: 12px 0 0 12px;
   overflow: hidden;
-  background: var(--bar-bg);
+  background: #a0a0a8;
+}
+
+/* Персонаж поверх сцены (мультяшный, как в референсе) */
+.room-home .character-svg {
+  position: absolute;
+  left: 28%;
+  bottom: 18%;
+  width: 26%;
+  height: auto;
+  max-height: 50%;
+  pointer-events: none;
+}
+
+/* Панель статов: тёмная, неоновая обводка, сегменты */
+.stats-panel {
+  width: 115px;
+  min-width: 115px;
+  background: #1a1a22;
+  border-left: 3px solid #00e676;
+  border-radius: 0 12px 12px 0;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stats-panel-title {
+  font-size: 0.75rem;
+  color: #00e676;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+}
+
+.stat-icon {
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.stat-segments {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-segments .seg {
+  flex: 1;
+  height: 8px;
+  border-radius: 1px;
+  background: #2a2a35;
+  min-width: 4px;
+}
+
+.stat-segments .seg.filled {
+  background: #00e676;
+  box-shadow: 0 0 6px rgba(0, 230, 118, 0.6);
+}
+
+.stat-num {
+  font-weight: 700;
+  color: #eaeaea;
+}
+
+.stat-max {
+  font-size: 0.65rem;
+  color: #8e8e93;
 }
 
 .scene-svg {
@@ -119,12 +201,12 @@ body {
   background: rgba(10, 132, 255, 0.3);
 }
 
-/* Квартира: зоны поверх телефона, ноута, гантели, кровати, двери */
-.hotspot-area-phone  { left: 80%; top: 50%; width: 14%; height: 18%; }
-.hotspot-area-laptop { left: 64%; top: 42%; width: 20%; height: 18%; }
-.hotspot-area-dumbbell { left: 34%; top: 68%; width: 22%; height: 16%; }
-.hotspot-area-bed    { left: 2%; top: 48%; width: 28%; height: 28%; }
-.hotspot-area-door   { left: 76%; top: 34%; width: 20%; height: 32%; }
+/* Квартира: тумбочка(телефон), стол(ноут), гантель, кровать, дверь(стрелка) */
+.hotspot-area-phone  { left: 24%; top: 46%; width: 12%; height: 20%; }
+.hotspot-area-laptop { left: 64%; top: 42%; width: 22%; height: 22%; }
+.hotspot-area-dumbbell { left: 72%; top: 72%; width: 16%; height: 14%; }
+.hotspot-area-bed    { left: 0%; top: 42%; width: 28%; height: 32%; }
+.hotspot-area-door   { left: 80%; top: 30%; width: 20%; height: 35%; }
 
 /* Зал */
 .gym-mirror   { left: 2%; top: 18%; width: 28%; height: 50%; }

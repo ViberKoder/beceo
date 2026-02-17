@@ -9,57 +9,119 @@
 </head>
 <body>
   <div id="game">
-    <!-- Квартира Павла — нарисованная сцена -->
+    <!-- Квартира: сцена в стиле Douchebag + панель статов справа -->
     <div id="location-home" class="location active">
       <div class="room room-home">
         <p class="room-title">Квартира Павла. Начало нулевых.</p>
-        <div class="scene-wrap">
-          <svg class="scene-svg" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d3d5c"/><stop offset="1" stop-color="#2d2d44"/></linearGradient>
-              <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#252538"/><stop offset="1" stop-color="#1a1a2e"/></linearGradient>
-            </defs>
-            <!-- Стена -->
-            <rect width="400" height="160" fill="url(#wallGrad)"/>
-            <!-- Окно -->
-            <rect x="140" y="25" width="120" height="70" rx="4" fill="#1a3a5c" stroke="#0a84ff" stroke-width="2"/>
-            <line x1="200" y1="25" x2="200" y2="95" stroke="#0a84ff" stroke-width="1.5"/>
-            <line x1="140" y1="60" x2="260" y2="60" stroke="#0a84ff" stroke-width="1.5"/>
-            <!-- Пол -->
-            <rect y="160" width="400" height="100" fill="url(#floorGrad)"/>
-            <!-- Кровать -->
-            <rect x="20" y="130" width="100" height="55" rx="6" fill="#4a4a6a" stroke="#5a5a7a"/>
-            <rect x="28" y="135" width="35" height="25" rx="4" fill="#6a6a8a"/>
-            <rect x="25" y="168" width="90" height="12" rx="2" fill="#3a3a5a"/>
-            <!-- Стол + ноут + телефон -->
-            <rect x="260" y="125" width="95" height="45" rx="4" fill="#3d3d5c" stroke="#5a5a7a"/>
-            <rect x="268" y="115" width="55" height="28" rx="2" fill="#2a2a3a"/>
-            <rect x="272" y="118" width="47" height="18" rx="1" fill="#0a84ff"/>
-            <rect x="332" y="138" width="18" height="28" rx="4" fill="#1a1a2e" stroke="#0a84ff"/>
-            <!-- Гантель на полу -->
-            <line x1="155" y1="195" x2="195" y2="195" stroke="#5a5a7a" stroke-width="6"/>
-            <circle cx="155" cy="195" r="12" fill="#4a4a6a" stroke="#6a6a8a"/>
-            <circle cx="195" cy="195" r="12" fill="#4a4a6a" stroke="#6a6a8a"/>
-            <!-- Дверь -->
-            <rect x="318" y="95" width="55" height="75" rx="4" fill="#252538" stroke="#5a5a7a"/>
-            <circle cx="365" cy="125" r="3" fill="#8e8e93"/>
-            <!-- Человечек (Павел) -->
-            <g class="character" transform="translate(200, 145)">
-              <ellipse cx="0" cy="-22" rx="14" ry="16" fill="#6a6a8a" stroke="#8a8aaa"/>
-              <rect x="-10" y="-2" width="20" height="32" rx="4" fill="#5a5a7a" stroke="#6a6a8a"/>
-              <line x1="-10" y1="8" x2="-22" y2="0" stroke="#5a5a7a" stroke-width="5"/>
-              <line x1="10" y1="8" x2="20" y2="18" stroke="#5a5a7a" stroke-width="5"/>
-              <line x1="-8" y1="28" x2="-12" y2="48" stroke="#4a4a6a" stroke-width="5"/>
-              <line x1="8" y1="28" x2="10" y2="48" stroke="#4a4a6a" stroke-width="5"/>
-            </g>
-          </svg>
-          <div class="hotspots-overlay">
-            <button type="button" class="hotspot-area hotspot-area-phone" data-action="open-phone" title="Телефон"></button>
-            <button type="button" class="hotspot-area hotspot-area-laptop" data-action="telegram" title="Комп"></button>
-            <button type="button" class="hotspot-area hotspot-area-dumbbell" data-action="muscles" title="Гантель"></button>
-            <button type="button" class="hotspot-area hotspot-area-bed" data-action="children" title="Кровать"></button>
-            <button type="button" class="hotspot-area hotspot-area-door" data-action="go-map" title="Выйти"></button>
+        <div class="game-view">
+          <div class="scene-wrap">
+            <svg class="scene-svg" viewBox="0 0 380 240" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <linearGradient id="wallLight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8b8c0"/><stop offset="1" stop-color="#a0a0a8"/></linearGradient>
+                <linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#787880"/><stop offset="1" stop-color="#606068"/></linearGradient>
+              </defs>
+              <!-- Стена светлая -->
+              <rect width="380" height="145" fill="url(#wallLight)" stroke="#8a8a92" stroke-width="1"/>
+              <!-- Пол -->
+              <rect y="145" width="380" height="95" fill="url(#floorG)" stroke="#505058" stroke-width="1"/>
+              <!-- Кровать: каркас дерево, матрас серый -->
+              <rect x="8" y="108" width="92" height="50" rx="2" fill="#4a3728" stroke="#2a1f18"/>
+              <rect x="12" y="112" width="84" height="38" rx="2" fill="#c8c8d0" stroke="#a0a0a8"/>
+              <rect x="16" y="115" width="28" height="18" rx="2" fill="#d8d8e0"/>
+              <!-- Тумбочка + лампа + телефон -->
+              <rect x="102" y="118" width="28" height="38" fill="#3d2e22" stroke="#2a2018"/>
+              <rect x="108" y="108" width="16" height="22" rx="1" fill="#e8c830" stroke="#c0a020"/>
+              <text x="116" y="122" font-size="10" fill="#1a1a1a" text-anchor="middle">♪</text>
+              <rect x="124" y="128" width="10" height="18" rx="2" fill="#1a1a1a" stroke="#333"/>
+              <!-- Шкаф открытый -->
+              <rect x="138" y="75" width="58" height="75" fill="#3d2e22" stroke="#2a2018"/>
+              <line x1="167" y1="75" x2="167" y2="150" stroke="#4a3728"/>
+              <rect x="145" y="85" width="12" height="8" fill="#808890"/>
+              <rect x="160" y="85" width="12" height="8" fill="#808890"/>
+              <rect x="145" y="98" width="28" height="22" rx="1" fill="#6a9eb0"/>
+              <rect x="150" y="125" width="22" height="18" rx="1" fill="#7aa8b8"/>
+              <!-- Постер -->
+              <rect x="200" y="25" width="90" height="65" rx="2" fill="#1a1a1a" stroke="#333"/>
+              <rect x="205" y="30" width="80" height="55" rx="1" fill="#e07830"/>
+              <text x="245" y="55" font-size="10" font-weight="bold" fill="#1a1a1a" text-anchor="middle">TON</text>
+              <text x="245" y="70" font-size="14" font-weight="bold" fill="#1a1a1a" text-anchor="middle">$1000</text>
+              <!-- Стол + ноут + гантель на полу -->
+              <rect x="258" y="115" width="70" height="38" rx="2" fill="#5a4a3a" stroke="#3d3528"/>
+              <rect x="265" y="108" width="42" height="22" rx="1" fill="#2a2a2a"/>
+              <rect x="268" y="111" width="36" height="14" rx="0" fill="#0a84ff"/>
+              <circle cx="295" cy="188" r="10" fill="#5a5a62" stroke="#3a3a42"/>
+              <circle cx="318" cy="188" r="10" fill="#5a5a62" stroke="#3a3a42"/>
+              <line x1="305" y1="188" x2="308" y2="188" stroke="#4a4a52" stroke-width="5"/>
+              <!-- Дверь и неоновая стрелка выхода -->
+              <rect x="318" y="82" width="42" height="68" rx="2" fill="#505058" stroke="#404048"/>
+              <circle cx="355" cy="108" r="4" fill="#8e8e93"/>
+              <path d="M348 115 L365 128 L348 141 Z" fill="#00e676" stroke="#00c864" stroke-width="2"/>
+            </svg>
+            <!-- Персонаж: худой, майка, джинсы, кулаки (как в референсе) -->
+            <svg class="character-svg" viewBox="0 0 100 140" preserveAspectRatio="xMidYMax meet">
+              <g transform="translate(50, 95)">
+                <!-- Волосы шипами -->
+                <path d="M -12 -28 L -8 -42 L 0 -38 L 8 -42 L 12 -28 L 6 -26 L 0 -30 L -6 -26 Z" fill="#252530" stroke="#1a1a22"/>
+                <!-- Голова -->
+                <ellipse cx="0" cy="-22" rx="14" ry="16" fill="#e8c8a8" stroke="#1a1a22" stroke-width="1.5"/>
+                <!-- Лицо: грустные брови, глаза, рот -->
+                <path d="M -6 -26 Q -4 -28 0 -27" fill="none" stroke="#252530" stroke-width="1.2"/>
+                <path d="M 0 -27 Q 4 -28 6 -26" fill="none" stroke="#252530" stroke-width="1.2"/>
+                <ellipse cx="-4" cy="-24" rx="2" ry="2.2" fill="#252530"/>
+                <ellipse cx="4" cy="-24" rx="2" ry="2.2" fill="#252530"/>
+                <path d="M -3 -18 Q 0 -16 3 -18" fill="none" stroke="#252530" stroke-width="1"/>
+                <!-- Шея -->
+                <rect x="-4" y="-6" width="8" height="6" fill="#e0b898" stroke="#1a1a22"/>
+                <!-- Майка -->
+                <path d="M -18 0 L -16 32 L 16 32 L 18 0 L 14 -2 L 12 28 L -12 28 L -14 -2 Z" fill="#f5f5eb" stroke="#1a1a22" stroke-width="1.2"/>
+                <!-- Руки с кулаками у пояса -->
+                <path d="M -18 8 L -28 14 L -26 20 L -16 14 Z" fill="#e8c8a8" stroke="#1a1a22"/>
+                <path d="M 18 8 L 28 14 L 26 20 L 16 14 Z" fill="#e8c8a8" stroke="#1a1a22"/>
+                <circle cx="-26" cy="18" r="6" fill="#e8c8a8" stroke="#1a1a22"/>
+                <circle cx="26" cy="18" r="6" fill="#e8c8a8" stroke="#1a1a22"/>
+                <!-- Джинсы -->
+                <path d="M -16 32 L -14 58 L -6 58 L -8 32 Z" fill="#5a8a8a" stroke="#1a1a22" stroke-width="1"/>
+                <path d="M 8 32 L 6 58 L 14 58 L 16 32 Z" fill="#5a8a8a" stroke="#1a1a22" stroke-width="1"/>
+                <line x1="-2" y1="32" x2="2" y2="32" stroke="#4a7a7a"/>
+              </g>
+            </svg>
+            <div class="hotspots-overlay">
+              <button type="button" class="hotspot-area hotspot-area-phone" data-action="open-phone" title="Телефон"></button>
+              <button type="button" class="hotspot-area hotspot-area-laptop" data-action="telegram" title="Комп"></button>
+              <button type="button" class="hotspot-area hotspot-area-dumbbell" data-action="muscles" title="Гантель"></button>
+              <button type="button" class="hotspot-area hotspot-area-bed" data-action="children" title="Кровать"></button>
+              <button type="button" class="hotspot-area hotspot-area-door" data-action="go-map" title="Выйти"></button>
+            </div>
           </div>
+          <!-- Панель статов как в Douchebag: тёмная, сегменты, неон -->
+          <aside class="stats-panel">
+            <div class="stats-panel-title">Состояние</div>
+            <div class="stat-row">
+              <span class="stat-icon">👑</span>
+              <div class="stat-segments" id="seg-level" data-max="10"></div>
+              <span class="stat-num" id="num-level">0</span><span class="stat-max">/100</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-icon">💪</span>
+              <div class="stat-segments" id="seg-muscles" data-max="10"></div>
+              <span class="stat-num" id="num-muscles">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-icon">👶</span>
+              <div class="stat-segments" id="seg-children" data-max="10"></div>
+              <span class="stat-num" id="num-children">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-icon">📱</span>
+              <div class="stat-segments" id="seg-telegram" data-max="10"></div>
+              <span class="stat-num" id="num-telegram">0</span><span class="stat-max">%</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-icon">🪙</span>
+              <div class="stat-segments" id="seg-ton" data-max="10"></div>
+              <span class="stat-num" id="num-ton">0</span><span class="stat-max">$</span>
+            </div>
+          </aside>
         </div>
       </div>
     </div>
@@ -67,47 +129,38 @@
     <!-- Зал -->
     <div id="location-gym" class="location">
       <div class="room room-gym">
-        <p class="room-title">Качалка. Пот, железо, зеркало.</p>
-        <div class="scene-wrap">
-          <svg class="scene-svg" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <linearGradient id="gymWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#252538"/><stop offset="1" stop-color="#1a1a2e"/></linearGradient>
-            </defs>
-            <rect width="400" height="260" fill="url(#gymWall)"/>
-            <!-- Зеркало -->
-            <rect x="20" y="40" width="100" height="120" rx="4" fill="#2a2a3a" stroke="#5a5a7a"/>
-            <line x1="70" y1="40" x2="70" y2="160" stroke="#3a3a5a"/>
-            <line x1="20" y1="100" x2="120" y2="100" stroke="#3a3a5a"/>
-            <!-- Штанга на стойке -->
-            <rect x="155" y="90" width="90" height="12" rx="2" fill="#5a5a7a"/>
-            <circle cx="155" cy="96" r="8" fill="#4a4a6a"/>
-            <circle cx="245" cy="96" r="8" fill="#4a4a6a"/>
-            <rect x="150" y="96" width="12" height="70" fill="#3d3d5c"/>
-            <rect x="238" y="96" width="12" height="70" fill="#3d3d5c"/>
-            <!-- Беговая дорожка -->
-            <rect x="270" y="140" width="110" height="50" rx="6" fill="#2a2a3a" stroke="#4a4a6a"/>
-            <line x1="275" y1="155" x2="375" y2="155" stroke="#3a3a5a" stroke-width="2"/>
-            <line x1="275" y1="165" x2="375" y2="165" stroke="#3a3a5a" stroke-width="2"/>
-            <line x1="275" y1="175" x2="375" y2="175" stroke="#3a3a5a" stroke-width="2"/>
-            <!-- Дверь -->
-            <rect x="318" y="50" width="55" height="75" rx="4" fill="#1a1a2e" stroke="#5a5a7a"/>
-            <circle cx="365" cy="80" r="3" fill="#8e8e93"/>
-            <!-- Человечек качается -->
-            <g class="character" transform="translate(200, 175)">
-              <ellipse cx="0" cy="-22" rx="14" ry="16" fill="#6a6a8a"/>
-              <rect x="-10" y="-2" width="20" height="35" rx="4" fill="#5a5a7a"/>
-              <line x1="-12" y1="5" x2="-28" y2="-15" stroke="#5a5a7a" stroke-width="6"/>
-              <line x1="12" y1="5" x2="28" y2="-15" stroke="#5a5a7a" stroke-width="6"/>
-              <line x1="-8" y1="32" x2="-10" y2="52" stroke="#4a4a6a" stroke-width="5"/>
-              <line x1="8" y1="32" x2="10" y2="52" stroke="#4a4a6a" stroke-width="5"/>
-            </g>
-          </svg>
-          <div class="hotspots-overlay">
-            <button type="button" class="hotspot-area gym-bar" data-action="muscles" title="Штанга"></button>
-            <button type="button" class="hotspot-area gym-treadmill" data-action="muscles" title="Дорожка"></button>
-            <button type="button" class="hotspot-area gym-mirror" data-action="view-muscles" title="Зеркало"></button>
-            <button type="button" class="hotspot-area gym-door" data-action="go-map" title="Выйти"></button>
+        <p class="room-title">Качалка.</p>
+        <div class="game-view">
+          <div class="scene-wrap">
+            <svg class="scene-svg" viewBox="0 0 380 240" preserveAspectRatio="xMidYMid meet">
+              <rect width="380" height="240" fill="#252538"/>
+              <rect x="15" y="35" width="95" height="115" rx="4" fill="#1a1a2e" stroke="#00e676"/>
+              <line x1="62" y1="35" x2="62" y2="150" stroke="#2a2a3e"/>
+              <line x1="15" y1="92" x2="110" y2="92" stroke="#2a2a3e"/>
+              <rect x="140" y="75" width="100" height="14" rx="2" fill="#5a5a6a" stroke="#00e676"/>
+              <circle cx="140" cy="82" r="10" fill="#4a4a5a"/>
+              <circle cx="240" cy="82" r="10" fill="#4a4a5a"/>
+              <rect x="255" y="125" width="105" height="45" rx="6" fill="#1a1a2e" stroke="#3a3a5a"/>
+              <line x1="262" y1="140" x2="355" y2="140" stroke="#2a2a3e" stroke-width="2"/>
+              <line x1="262" y1="150" x2="355" y2="150" stroke="#2a2a3e" stroke-width="2"/>
+              <rect x="318" y="50" width="45" height="70" rx="2" fill="#303040" stroke="#00e676"/>
+              <path d="M348 82 L365 92 L348 102 Z" fill="#00e676"/>
+            </svg>
+            <div class="hotspots-overlay">
+              <button type="button" class="hotspot-area gym-bar" data-action="muscles" title="Штанга"></button>
+              <button type="button" class="hotspot-area gym-treadmill" data-action="muscles" title="Дорожка"></button>
+              <button type="button" class="hotspot-area gym-mirror" data-action="view-muscles" title="Зеркало"></button>
+              <button type="button" class="hotspot-area gym-door" data-action="go-map" title="Выйти"></button>
+            </div>
           </div>
+          <aside class="stats-panel">
+            <div class="stats-panel-title">Состояние</div>
+            <div class="stat-row"><span class="stat-icon">👑</span><div class="stat-segments" id="seg-level-gym" data-max="10"></div><span class="stat-num" id="num-level-gym">0</span></div>
+            <div class="stat-row"><span class="stat-icon">💪</span><div class="stat-segments" id="seg-muscles-gym" data-max="10"></div><span class="stat-num" id="num-muscles-gym">0</span></div>
+            <div class="stat-row"><span class="stat-icon">👶</span><div class="stat-segments" id="seg-children-gym" data-max="10"></div><span class="stat-num" id="num-children-gym">0</span></div>
+            <div class="stat-row"><span class="stat-icon">📱</span><div class="stat-segments" id="seg-telegram-gym" data-max="10"></div><span class="stat-num" id="num-telegram-gym">0</span>%</div>
+            <div class="stat-row"><span class="stat-icon">🪙</span><div class="stat-segments" id="seg-ton-gym" data-max="10"></div><span class="stat-num" id="num-ton-gym">0</span>$</div>
+          </aside>
         </div>
       </div>
     </div>
@@ -115,45 +168,38 @@
     <!-- Подвал -->
     <div id="location-cave" class="location">
       <div class="room room-cave">
-        <p class="room-title">Подвал. Сервера мигают. Здесь рождается Telegram.</p>
-        <div class="scene-wrap">
-          <svg class="scene-svg" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet">
-            <rect width="400" height="260" fill="#0f0f1a"/>
-            <!-- Стойка серверов -->
-            <rect x="30" y="60" width="100" height="140" rx="4" fill="#1a1a2e" stroke="#3a3a5a"/>
-            <rect x="38" y="70" width="84" height="18" rx="2" fill="#252538"/>
-            <circle cx="48" cy="79" r="2" fill="#0a84ff"/>
-            <circle cx="58" cy="79" r="2" fill="#0a84ff"/>
-            <rect x="38" y="95" width="84" height="18" rx="2" fill="#252538"/>
-            <circle cx="48" cy="104" r="2" fill="#0a84ff"/>
-            <rect x="38" y="120" width="84" height="18" rx="2" fill="#252538"/>
-            <rect x="38" y="145" width="84" height="18" rx="2" fill="#252538"/>
-            <rect x="38" y="170" width="84" height="18" rx="2" fill="#252538"/>
-            <!-- Монитор с графиком TON -->
-            <rect x="260" y="80" width="120" height="75" rx="4" fill="#1a1a2e" stroke="#0a84ff"/>
-            <rect x="268" y="88" width="104" height="50" rx="2" fill="#0d1117"/>
-            <polyline points="275,120 300,100 330,110 375,85" fill="none" stroke="#0a84ff" stroke-width="2"/>
-            <text x="305" y="145" fill="#8e8e93" font-size="10" text-anchor="middle">TON $</text>
-            <!-- Клавиатура -->
-            <rect x="280" y="175" width="80" height="25" rx="2" fill="#252538"/>
-            <!-- Дверь -->
-            <rect x="318" y="50" width="55" height="75" rx="4" fill="#1a1a2e" stroke="#3a3a5a"/>
-            <!-- Человечек за компом -->
-            <g class="character" transform="translate(320, 150)">
-              <ellipse cx="0" cy="-18" rx="12" ry="14" fill="#6a6a8a"/>
-              <rect x="-8" y="-2" width="16" height="28" rx="3" fill="#5a5a7a"/>
-              <line x1="-8" y1="8" x2="-18" y2="5" stroke="#5a5a7a" stroke-width="4"/>
-              <line x1="8" y1="8" x2="18" y2="5" stroke="#5a5a7a" stroke-width="4"/>
-              <line x1="-6" y1="24" x2="-6" y2="42" stroke="#4a4a6a" stroke-width="4"/>
-              <line x1="6" y1="24" x2="6" y2="42" stroke="#4a4a6a" stroke-width="4"/>
-            </g>
-          </svg>
-          <div class="hotspots-overlay">
-            <button type="button" class="hotspot-area cave-servers" data-action="telegram" title="Сервера"></button>
-            <button type="button" class="hotspot-area cave-chart" data-action="ton" title="График TON"></button>
-            <button type="button" class="hotspot-area cave-code" data-action="telegram" title="Код"></button>
-            <button type="button" class="hotspot-area cave-door" data-action="go-map" title="Выйти"></button>
+        <p class="room-title">Подвал. Сервера. TON.</p>
+        <div class="game-view">
+          <div class="scene-wrap">
+            <svg class="scene-svg" viewBox="0 0 380 240" preserveAspectRatio="xMidYMid meet">
+              <rect width="380" height="240" fill="#0f0f1a"/>
+              <rect x="25" y="55" width="95" height="130" rx="4" fill="#1a1a2e" stroke="#00e676"/>
+              <rect x="32" y="62" width="81" height="14" rx="2" fill="#252538"/><circle cx="42" cy="69" r="2" fill="#00e676"/><circle cx="52" cy="69" r="2" fill="#00e676"/>
+              <rect x="32" y="82" width="81" height="14" rx="2" fill="#252538"/><circle cx="42" cy="89" r="2" fill="#00e676"/>
+              <rect x="32" y="102" width="81" height="14" rx="2" fill="#252538"/>
+              <rect x="32" y="122" width="81" height="14" rx="2" fill="#252538"/>
+              <rect x="255" y="75" width="115" height="72" rx="4" fill="#1a1a2e" stroke="#00e676"/>
+              <rect x="262" y="82" width="101" height="48" rx="2" fill="#0d1117"/>
+              <polyline points="270,110 300,95 330,100 365,85" fill="none" stroke="#00e676" stroke-width="2"/>
+              <text x="313" y="138" fill="#8e8e93" font-size="9" text-anchor="middle">TON $</text>
+              <rect x="318" y="48" width="45" height="70" rx="2" fill="#1a1a2e" stroke="#00e676"/>
+              <path d="M348 78 L365 88 L348 98 Z" fill="#00e676"/>
+            </svg>
+            <div class="hotspots-overlay">
+              <button type="button" class="hotspot-area cave-servers" data-action="telegram" title="Сервера"></button>
+              <button type="button" class="hotspot-area cave-chart" data-action="ton" title="График TON"></button>
+              <button type="button" class="hotspot-area cave-code" data-action="telegram" title="Код"></button>
+              <button type="button" class="hotspot-area cave-door" data-action="go-map" title="Выйти"></button>
+            </div>
           </div>
+          <aside class="stats-panel">
+            <div class="stats-panel-title">Состояние</div>
+            <div class="stat-row"><span class="stat-icon">👑</span><div class="stat-segments" id="seg-level-cave" data-max="10"></div><span class="stat-num" id="num-level-cave">0</span></div>
+            <div class="stat-row"><span class="stat-icon">💪</span><div class="stat-segments" id="seg-muscles-cave" data-max="10"></div><span class="stat-num" id="num-muscles-cave">0</span></div>
+            <div class="stat-row"><span class="stat-icon">👶</span><div class="stat-segments" id="seg-children-cave" data-max="10"></div><span class="stat-num" id="num-children-cave">0</span></div>
+            <div class="stat-row"><span class="stat-icon">📱</span><div class="stat-segments" id="seg-telegram-cave" data-max="10"></div><span class="stat-num" id="num-telegram-cave">0</span>%</div>
+            <div class="stat-row"><span class="stat-icon">🪙</span><div class="stat-segments" id="seg-ton-cave" data-max="10"></div><span class="stat-num" id="num-ton-cave">0</span>$</div>
+          </aside>
         </div>
       </div>
     </div>
@@ -162,20 +208,6 @@
     <div id="location-map" class="location">
       <div class="room room-map">
         <p class="room-title">Куда идём?</p>
-        <div class="scene-wrap map-scene">
-          <svg class="scene-svg" viewBox="0 0 400 180" preserveAspectRatio="xMidYMid meet">
-            <rect width="400" height="180" fill="#16213e"/>
-            <rect x="50" y="40" width="80" height="60" rx="8" fill="#2d2d44" stroke="#0a84ff"/>
-            <text x="90" y="75" fill="#eaeaea" font-size="28" text-anchor="middle">🏠</text>
-            <text x="90" y="95" fill="#8e8e93" font-size="11" text-anchor="middle">Квартира</text>
-            <rect x="160" y="40" width="80" height="60" rx="8" fill="#2d2d44" stroke="#0a84ff"/>
-            <text x="200" y="75" fill="#eaeaea" font-size="28" text-anchor="middle">💪</text>
-            <text x="200" y="95" fill="#8e8e93" font-size="11" text-anchor="middle">Зал</text>
-            <rect x="270" y="40" width="80" height="60" rx="8" fill="#2d2d44" stroke="#0a84ff"/>
-            <text x="310" y="75" fill="#eaeaea" font-size="28" text-anchor="middle">🖥️</text>
-            <text x="310" y="95" fill="#8e8e93" font-size="11" text-anchor="middle">Подвал</text>
-          </svg>
-        </div>
         <div class="map-buttons">
           <button type="button" class="map-btn" data-location="home">🏠 Квартира</button>
           <button type="button" class="map-btn" data-location="gym">💪 Зал</button>
@@ -185,7 +217,7 @@
     </div>
 
     <div class="game-log" id="log">
-      <p>Ты в квартире молодого Павла. Тапни по телефону на столе — там твоё состояние. Комп, гантель, кровать, дверь.</p>
+      <p>Квартира молодого Павла. Тапни по предметам: телефон на тумбочке, комп, гантель, кровать. Зелёная стрелка — выход.</p>
     </div>
     <footer class="game-footer">
       <button type="button" id="btn-save">Сохранить</button>
@@ -193,26 +225,23 @@
     </footer>
   </div>
 
-  <!-- Телефон -->
+  <!-- Телефон (приложения) -->
   <div id="phone-overlay" class="phone-overlay hidden">
     <div class="phone-frame">
       <div class="phone-notch"></div>
       <div class="phone-screen">
-        <div class="phone-status">
-          <span id="phone-time">12:00</span>
-          <span class="phone-battery">🔋 100%</span>
-        </div>
+        <div class="phone-status"><span id="phone-time">12:00</span><span class="phone-battery">🔋 100%</span></div>
         <div id="phone-page-stats" class="phone-page active">
           <h2 class="phone-title">Состояние</h2>
-          <div class="phone-stat"><span class="phone-stat-label">Уровень Дурова</span><span id="p-val-level" class="phone-stat-val">0</span><span class="phone-stat-max">/100</span></div>
+          <div class="phone-stat"><span class="phone-stat-label">Уровень Дурова</span><span id="p-val-level">0</span>/100</div>
           <div class="phone-stat-bar"><div class="phone-stat-fill" id="p-bar-level"></div></div>
-          <div class="phone-stat"><span class="phone-stat-label">Накаченность</span><span id="p-val-muscles" class="phone-stat-val">0</span><span class="phone-stat-max">/100</span></div>
+          <div class="phone-stat"><span class="phone-stat-label">Накаченность</span><span id="p-val-muscles">0</span>/100</div>
           <div class="phone-stat-bar"><div class="phone-stat-fill" id="p-bar-muscles"></div></div>
-          <div class="phone-stat"><span class="phone-stat-label">Дети</span><span id="p-val-children" class="phone-stat-val">0</span><span class="phone-stat-max">/100</span></div>
+          <div class="phone-stat"><span class="phone-stat-label">Дети</span><span id="p-val-children">0</span>/100</div>
           <div class="phone-stat-bar"><div class="phone-stat-fill" id="p-bar-children"></div></div>
-          <div class="phone-stat"><span class="phone-stat-label">Telegram</span><span id="p-val-telegram" class="phone-stat-val">0</span><span class="phone-stat-max">%</span></div>
+          <div class="phone-stat"><span class="phone-stat-label">Telegram</span><span id="p-val-telegram">0</span>%</div>
           <div class="phone-stat-bar"><div class="phone-stat-fill" id="p-bar-telegram"></div></div>
-          <div class="phone-stat"><span class="phone-stat-label">TON</span><span id="p-val-ton" class="phone-stat-val">0</span><span class="phone-stat-max">$</span></div>
+          <div class="phone-stat"><span class="phone-stat-label">TON</span><span id="p-val-ton">0</span>$</div>
           <div class="phone-stat-bar"><div class="phone-stat-fill" id="p-bar-ton"></div></div>
           <div class="phone-nav">
             <button type="button" class="phone-nav-btn active" data-page="stats">Статы</button>

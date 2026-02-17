@@ -123,6 +123,7 @@
       addLog(pickMsg('viewMuscles', null));
     }
     updateLevel();
+    renderStatsPanels();
     renderPhoneStats();
     checkWin();
     if (Telegram) Telegram.HapticFeedback.impactOccurred('light');
@@ -164,18 +165,78 @@
     });
   }
 
+  var SEGMENT_IDS = {
+    level: ['seg-level', 'seg-level-gym', 'seg-level-cave'],
+    muscles: ['seg-muscles', 'seg-muscles-gym', 'seg-muscles-cave'],
+    children: ['seg-children', 'seg-children-gym', 'seg-children-cave'],
+    telegram: ['seg-telegram', 'seg-telegram-gym', 'seg-telegram-cave'],
+    ton: ['seg-ton', 'seg-ton-gym', 'seg-ton-cave']
+  };
+  var NUM_IDS = {
+    level: ['num-level', 'num-level-gym', 'num-level-cave'],
+    muscles: ['num-muscles', 'num-muscles-gym', 'num-muscles-cave'],
+    children: ['num-children', 'num-children-gym', 'num-children-cave'],
+    telegram: ['num-telegram', 'num-telegram-gym', 'num-telegram-cave'],
+    ton: ['num-ton', 'num-ton-gym', 'num-ton-cave']
+  };
+
+  function initSegmentBars() {
+    document.querySelectorAll('.stat-segments').forEach(function (container) {
+      if (container.children.length > 0) return;
+      for (var i = 0; i < 10; i++) {
+        var seg = document.createElement('div');
+        seg.className = 'seg';
+        container.appendChild(seg);
+      }
+    });
+  }
+
+  function setSegmentFilled(container, filledCount) {
+    var kids = container.children;
+    for (var i = 0; i < kids.length; i++) {
+      kids[i].className = i < filledCount ? 'seg filled' : 'seg';
+    }
+  }
+
+  function renderStatsPanels() {
+    var stats = ['level', 'muscles', 'children', 'telegram', 'ton'];
+    stats.forEach(function (key) {
+      var val = state[key];
+      var max = goals[key];
+      var filled = Math.min(10, Math.round((val / max) * 10));
+      SEGMENT_IDS[key].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) setSegmentFilled(el, filled);
+      });
+      NUM_IDS[key].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = val;
+      });
+    });
+  }
+
   function renderPhoneStats() {
     var pct = function (val, max) { return Math.min(100, (val / max) * 100); };
-    document.getElementById('p-bar-level').style.width = pct(state.level, goals.level) + '%';
-    document.getElementById('p-val-level').textContent = state.level;
-    document.getElementById('p-bar-muscles').style.width = pct(state.muscles, goals.muscles) + '%';
-    document.getElementById('p-val-muscles').textContent = state.muscles;
-    document.getElementById('p-bar-children').style.width = pct(state.children, goals.children) + '%';
-    document.getElementById('p-val-children').textContent = state.children;
-    document.getElementById('p-bar-telegram').style.width = pct(state.telegram, goals.telegram) + '%';
-    document.getElementById('p-val-telegram').textContent = state.telegram;
-    document.getElementById('p-bar-ton').style.width = pct(state.ton, goals.ton) + '%';
-    document.getElementById('p-val-ton').textContent = state.ton;
+    var barLevel = document.getElementById('p-bar-level');
+    if (barLevel) barLevel.style.width = pct(state.level, goals.level) + '%';
+    var pValLevel = document.getElementById('p-val-level');
+    if (pValLevel) pValLevel.textContent = state.level;
+    var pBarMuscles = document.getElementById('p-bar-muscles');
+    if (pBarMuscles) pBarMuscles.style.width = pct(state.muscles, goals.muscles) + '%';
+    var pValMuscles = document.getElementById('p-val-muscles');
+    if (pValMuscles) pValMuscles.textContent = state.muscles;
+    var pBarChildren = document.getElementById('p-bar-children');
+    if (pBarChildren) pBarChildren.style.width = pct(state.children, goals.children) + '%';
+    var pValChildren = document.getElementById('p-val-children');
+    if (pValChildren) pValChildren.textContent = state.children;
+    var pBarTelegram = document.getElementById('p-bar-telegram');
+    if (pBarTelegram) pBarTelegram.style.width = pct(state.telegram, goals.telegram) + '%';
+    var pValTelegram = document.getElementById('p-val-telegram');
+    if (pValTelegram) pValTelegram.textContent = state.telegram;
+    var pBarTon = document.getElementById('p-bar-ton');
+    if (pBarTon) pBarTon.style.width = pct(state.ton, goals.ton) + '%';
+    var pValTon = document.getElementById('p-val-ton');
+    if (pValTon) pValTon.textContent = state.ton;
   }
 
   function updatePhoneTime() {
@@ -192,7 +253,9 @@
       applyTheme();
     }
     load();
+    initSegmentBars();
     showLocation(state.location);
+    renderStatsPanels();
     renderPhoneStats();
     updatePhoneTime();
     setInterval(updatePhoneTime, 60000);
@@ -248,6 +311,7 @@
     var log = document.getElementById('log');
     if (log) log.innerHTML = '<p>Ты в квартире молодого Павла. Подойди к телефону — там твоё состояние.</p>';
     showLocation('home');
+    renderStatsPanels();
     renderPhoneStats();
     addLog('Прогресс сброшен.');
     if (Telegram) Telegram.HapticFeedback.notificationOccurred('warning');
