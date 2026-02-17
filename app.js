@@ -197,7 +197,7 @@
     updatePhoneTime();
     setInterval(updatePhoneTime, 60000);
 
-    document.querySelectorAll('.hotspot').forEach(function (btn) {
+    document.querySelectorAll('.hotspot-area, .hotspot').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var action = this.getAttribute('data-action');
         if (action === 'open-phone') openPhone();
